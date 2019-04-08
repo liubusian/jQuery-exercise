@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery-exercise</title>
+</head>
+<body>
+    
+    <!-- jQuery選擇器練習 -->
+    <div>
+        <h1>jQuery選擇器練習</h1>
+        <button>element選擇器</button>
+        <button id="id-selector">id選擇器</button>
+        <button class="class-selector">class選擇器</button>
+    </div>
+
+    <script lang="text/javascript" src="js/jQuery-min.js"></script>
+
+    <!--jQuery選擇器練習-->
+    <script>
+        /**
+         * 確保文件已載入完成
+         * 寫法一
+         */
+        $(document).ready(function(){
+            
+            $('button').on('click', function(){
+                
+                alert($(this).text());
+
+            });
+
+            $('#id-selector').on('click', function(){
+                
+                alert('id-selected:' + $(this).text());
+
+            });
+
+            $('.class-selector').on('click', function(){
+                
+                alert('class-selected:' +$(this).text());
+
+            });
+        });
+    </script>
+
+
+</body>
+</html>
