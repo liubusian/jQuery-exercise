@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery選擇器練習</title>
+
+    <script lang="text/javascript" src="js/jQuery-min.js"></script>
+
+    <script>
+        
+        // 重構按鈕的觸發和結果顯示
+        // 1. 擷取方法 => show_alert
+        // 2. 修改處發事件
+        function show_alert(btnObj, value)
+        {
+            alert( $(btnObj).attr('id') + ":" + value);
+        }
+
+        
+    </script>
+</head>
+<body>
+    
+    <!-- jQuery選擇器練習 -->
+    <h1>jQuery選擇器練習</h1>
+
+    <!-- 基礎選擇器 -->
+    <h3>基礎選擇器</h3>
+    <button id="element-selector">element選擇器</button>
+    <button id="id-selector">id選擇器</button>
+    <button id="class-selector" class="class-selector">class選擇器</button>
+
+    <!--jQuery 基礎選擇器-->
+    <script>
+        /**
+            * 確保文件已載入完成
+            */
+        $(document).ready(function(){
+            
+            $('button').on('click', function(){
+                
+                show_alert(this, $(this).text());
+
+            });
+
+            $('#id-selector').on('click', function(){
+                
+                show_alert(this, $(this).text());
+
+            });
+
+            $('.class-selector').on('click', function(){
+                
+                show_alert(this, $(this).text());
+
+            });
+        });
+    </script>
+
+    <!-- 屬性選擇器 -->
+    <h3>屬性選擇器</h3>
+    <div>
+        <input type="text" name="username" value="Elmer">
+        <button id="attr-selector">屬性選擇器</button>
+    </div>
+
+    <script>
+
+        $('#attr-selector').click(function(){
+
+            show_alert(this, $('input[name="username"]').val() );
+    
+        });
+        
+    </script>
+
+
+    <!-- OR 選擇器 -->
+    <h3>OR 選擇器</h3>
+    <div>
+        <span id="title">我是標題</span>
+        <span id="content">我是內容</span>
+        <button id="or-selector">OR 選擇器</button>
+    </div>
+    
+    <script>
+        
+        $('#or-selector').click(function(){
+
+            var str = "";
+
+            $('#title, #content').each(function(k,v){
+                str += $(v).text() + '<br>';
+            });
+
+            show_alert(this, str);
+
+        });
+    
+    </script>
+    
+
+    <!-- AND 選擇器 -->
+    <h3>AND 選擇器</h3>
+    <div>
+        <span class="container text-info">我只是文字</span>
+        <button id="and-selector">AND 選擇器</button>
+    </div>
+
+    <script>
+        
+            $('#and-selector').click(function(){
+    
+                var str = "";
+
+                $('span.container.text-info').each(function(k,v){
+                    str += $(v).text() + "<br>";
+                });
+    
+                show_alert(this, str);
+    
+            });
+        
+        </script>
+
+    <!-- 子孫選擇器 -->
+    <h3>子孫選擇器</h3>
+    <div class="section">
+        <p>
+            <span >段落內的文字</span>
+        </p>
+        <button id="child-selector">子孫選擇器</button>
+    </div>
+
+    <script>
+        
+            $('#child-selector').click(function(){
+    
+                var str = "";
+
+                $('div.section p span').each(function(k,v){
+                    str += $(v).text() + '<br>';
+                });
+    
+                show_alert(this, str);
+    
+            });
+        
+        </script>
+
+
+    
+
+    
+
+
+</body>
+</html>

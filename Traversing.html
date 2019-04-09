@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 選擇器遍歷應用</title>
+
+    <script lang="text/javascript" src="js/jQuery-min.js"></script>
+</head>
+
+<body>
+
+    <div class="view-content">
+        <div class=" jcarousel-skin-default">
+            <div class="jcarousel-container jcarousel-container-horizontal jcarousel-navigation-after"
+                style="position: relative; display: block;">
+                <div class="jcarousel-clip jcarousel-clip-horizontal" style="position: relative;">
+                    <ul class="jcarousel jcarousel-view--latest-news--slideshow jcarousel-dom-latest-news-slideshow-1 jcarousel-processed jcarousel-list jcarousel-list-horizontal"
+                        style="overflow: hidden; position: relative; top: 0px; margin: 0px; padding: 0px; left: -2935px; width: 5438px;">
+                        <li class="odd jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal"
+                            style="float: left; list-style: none; width: 579px;" jcarouselindex="1">
+                            <div class="views-field views-field-field-image">
+                                <div class="field-content"><a href="/news/129865"><img
+                                            src="https://s4.itho.me/sites/default/files/styles/picture_size_medium/public/field/image/0409-06-eudata.png?itok=5p7LeAnz"
+                                            width="630" height="272" alt=""></a></div>
+                            </div>
+                            <div class="views-field views-field-title"> <span class="field-content"><a
+                                        href="/news/129865">歐盟將調查微軟產品是否侵犯GDPR</a></span> </div>
+                            <div class="views-field views-field-body">
+                                <div class="field-content">
+                                    <p>歐洲資料保護監管機關著手調查歐盟組織採用的微軟產品以及簽署的相關協議，是否違反GDPR或相關資料保護規定</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="even jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal"
+                            style="float: left; list-style: none; width: 579px;" jcarouselindex="2">
+                            <div class="views-field views-field-field-image">
+                                <div class="field-content"><a href="/news/129860"><img
+                                            src="https://s4.itho.me/sites/default/files/styles/picture_size_medium/public/field/image/0409-05-win10usb.png?itok=eHrd_R0B"
+                                            width="630" height="272" alt=""></a></div>
+                            </div>
+                            <div class="views-field views-field-title"> <span class="field-content"><a
+                                        href="/news/129860">Windows 10新政策：外接儲存裝置可直接拔掉，不必再走安全移除程序了</a></span> </div>
+                            <div class="views-field views-field-body">
+                                <div class="field-content">
+                                    <p>Windows 10 1809更改外接儲存媒體的移除政策，用戶可隨時直接移除USB，不必再走安全移除硬體的程序</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="odd jcarousel-item jcarousel-item-horizontal jcarousel-item-3 jcarousel-item-3-horizontal"
+                            style="float: left; list-style: none; width: 579px;" jcarouselindex="3">
+                            <div class="views-field views-field-field-image">
+                                <div class="field-content"><a href="/news/129859"><img
+                                            src="https://s4.itho.me/sites/default/files/styles/picture_size_medium/public/field/image/0409-04-edge.png?itok=kEIcrX5l"
+                                            width="630" height="272" alt=""></a></div>
+                            </div>
+                            <div class="views-field views-field-title"> <span class="field-content"><a
+                                        href="/news/129859">基於Chromium的Microsoft Edge預覽版來了</a></span> </div>
+                            <div class="views-field views-field-body">
+                                <div class="field-content">
+                                    <p>微軟發布基於Chromium開源專案的兩款Microsoft Edge預覽版，提供開發人員在Windows 10上進行測試</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="even jcarousel-item jcarousel-item-horizontal jcarousel-item-4 jcarousel-item-4-horizontal"
+                            style="float: left; list-style: none; width: 579px;" jcarouselindex="4">
+                            <div class="views-field views-field-field-image">
+                                <div class="field-content"><a href="/news/129858"><img
+                                            src="https://s4.itho.me/sites/default/files/styles/picture_size_medium/public/field/image/0409-03-ukpaper.png?itok=rfYbXfVR"
+                                            width="630" height="272" alt=""></a></div>
+                            </div>
+                            <div class="views-field views-field-title"> <span class="field-content"><a
+                                        href="/news/129858">英國政府擬要求網站平臺負責移除有害內容，違者將處以天價罰金</a></span> </div>
+                            <div class="views-field views-field-body">
+                                <div class="field-content">
+                                    <p>英國正研議成立專責機關，負責監督網站內容平臺移除負面網路內容，已獲得首相梅伊的公開支持</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="odd jcarousel-item jcarousel-item-horizontal jcarousel-item-5 jcarousel-item-5-horizontal"
+                            style="float: left; list-style: none; width: 579px;" jcarouselindex="5">
+                            <div class="views-field views-field-field-image">
+                                <div class="field-content"><a href="/news/129844"><img
+                                            src="https://s4.itho.me/sites/default/files/styles/picture_size_medium/public/field/image/refine_fireshot_capture_254_-_want_repeatable_scale_adopt_infrastructure_as_code_on_gcp_-_google_c_-_cloudgooglecom.jpg?itok=VH5pwRj5"
+                                            width="630" height="272" alt=""></a></div>
+                            </div>
+                            <div class="views-field views-field-title"> <span class="field-content"><a
+                                        href="/news/129844">GCP開始支援基礎設施即程式碼IaC</a></span> </div>
+                            <div class="views-field views-field-body">
+                                <div class="field-content">
+                                    <p>用管理程式碼的方法管理基礎設施配置，能簡化基礎設施審核作業，並快速部署環境</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="even jcarousel-item jcarousel-item-horizontal jcarousel-item-9 jcarousel-item-9-horizontal"
+                            style="float: left; list-style: none; width: 579px;" jcarouselindex="9">
+                            <div class="views-field views-field-field-image">
+                                <div class="field-content"><a href="/news/129858"><img
+                                            src="https://s4.itho.me/sites/default/files/styles/picture_size_medium/public/field/image/0409-03-ukpaper.png?itok=rfYbXfVR"
+                                            width="630" height="272" alt=""></a></div>
+                            </div>
+                            <div class="views-field views-field-title"> <span class="field-content"><a
+                                        href="/news/129858">英國政府擬要求網站平臺負責移除有害內容，違者將處以天價罰金</a></span> </div>
+                            <div class="views-field views-field-body">
+                                <div class="field-content">
+                                    <p>英國正研議成立專責機關，負責監督網站內容平臺移除負面網路內容，已獲得首相梅伊的公開支持</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="jcarousel-navigation">
+                    <li jcarousel-page="1" class=""><a href="javascript:void(0)"><span>1</span></a></li>
+                    <li jcarousel-page="2" class=""><a href="javascript:void(0)"><span>2</span></a></li>
+                    <li jcarousel-page="3" class=""><a href="javascript:void(0)"><span>3</span></a></li>
+                    <li jcarousel-page="4" class="active"><a href="javascript:void(0)"><span>4</span></a></li>
+                    <li jcarousel-page="5" class=""><a href="javascript:void(0)"><span>5</span></a></li>
+                </ul><a href="javascript:void(0)" class="jcarousel-prev jcarousel-prev-horizontal" style=""></a><a
+                    href="javascript:void(0)" class="jcarousel-next jcarousel-next-horizontal" style=""></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        function print(str)
+        {
+            console.log(str);
+        }
+
+        function print_t(str)
+        {
+            print('---------------' + str + '----------------');
+        }
+
+        function print_h()
+        {
+            print('--------------------------------------------');
+        }
+
+        // DOC
+        // 遍歷元素的方法
+        // 1. find => $(target).find('selector')
+        // 根據target元素向下查找每層有匹配selector的元素集合
+        print_t('find');
+        print( $('body').find('.jcarousel-item'));
+        print_h();
+
+        // 2. each => $(...).each(handler())
+        // 遍歷每個匹配的元素
+        print_t('each');
+        // 子孫選擇器使用" "間隔，查找所有子孫元素層；如有使用 ">" 表示僅查找第一層的子元素
+        $('.jcarousel-item .field-content > p').each(function(k,v){
+            print($(v).text());
+        });
+        print_h();
+
+        // 3. children => $().children('selector') [selector可選]
+        // 取得target元素集合的子元素集合 (若有帶入selector參數，則取得符合條件的元素集合)
+        print_t('children');
+        print( $('ul.jcarousel').children('.odd') );
+        print_h();
+
+        // 4. parent => $().parent(selector)
+        // 取得父級別的元素集合
+        print_t('parent');
+        print( $('ul.jcarousel').parent() );
+        print_h();
+        // 5. parents => $().parents(selector)
+        // 取得父和祖父級別的元素集合
+        print_t('parents');
+        print( $('ul.jcarousel').parents() );
+        print_h();
+        // 6. has => $(target).has(selector) 
+        // 將target集合縮減為符合selector的子元素的集合
+        print_t('has');
+        print( $('ul.jcarousel').has('*[href="/news/129865"]') );
+        print_h();
+        // 7. closest => $(target).closest(selector) 
+        // 最靠近target的父元素(包含自己)
+        print_t('closest');
+        print( $('li.active').closest('ul').html() );
+        print_h();
+        // 8. eq => $().eq(index)
+        // 僅能在複數的元素集合使用
+        print_t('eq');
+        print( $('ul.jcarousel li').eq(2).html() );
+        print_h();
+        // 9. filter => $(target).filter(selector)
+        // 在target集合，過濾掉匹配的selector
+        print_t('filter');
+        print( $('ul.jcarousel-navigation li').filter('li.active') );
+        print_h();
+        // 10. map => $().map(selector)
+        // 遍歷每個匹配的元素，並重新回傳結果值
+        print_t('map');
+        var collect = $('ul.jcarousel-navigation li').map(function(k,v){
+            return $(v).find('span').text();
+        });
+        print(collect);
+
+
+    </script>
+</body>
+
+</html>
