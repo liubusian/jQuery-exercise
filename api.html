@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery API練習</title>
+
+    <script lang="text/javascript" src="js/jQuery-min.js"></script>
+
+    <style>
+        .active {
+            color: blue;
+        }
+
+        .text-warning {
+            color:orange;
+        }
+
+        .text-error{
+            color:rgb(245, 239, 239);
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <h1>jQuery API練習</h1>
+
+    <h3>CSS 相關函數</h3>
+
+    <h5>新增class給元素</h5>
+    <div>
+        <span>我是文字</span>
+        <button id="css-active">激活</button>
+        <button id="css-active-bak">復原</button>
+        <button id="css-active-toggle">切換</button>
+    </div>
+    <script>
+        
+        $('#css-active').click(function(){
+            $(this).parent().children('span').addClass('active');
+        });
+    
+        $('#css-active-bak').click(function(){
+            $(this).parent().children('span').removeClass('active');
+        });
+
+        $('#css-active-toggle').click(function(){
+            $(this).parent().children('span').toggleClass('active');
+        });
+    </script>
+
+    <h5>判斷class存在</h5>
+    <ul id='css-has'>
+        <li>一般</li>
+        <li class="text-warning">警告</li>
+        <li class="text-error">錯誤</li>
+    </ul>
+    <script>
+        $('#css-has').children().each(function(k,li){
+            
+            //字型顏色
+            var color = 'white';
+            //背景顏色 background color
+            var bgColor = 'blue';
+
+            if($(li).hasClass('text-warning')){
+                bgColor = 'orange';
+            }
+
+            if($(li).hasClass('text-error'))
+            {
+                bgColor = 'red';
+            }
+
+            $(li).css("background-color",bgColor)
+                    .css('color', color);
+        });
+
+    </script>
+
+    <script>
+        $('#css-has').children().each(function(k,li){
+            
+            //字型顏色
+            var color = 'white';
+            //背景顏色 background color
+            var bgColor = 'blue';
+
+            var bgColors = {
+                'text-warning' : 'orange',
+                'text-error' : 'red'
+            };
+
+            // bgColors.each(function(k,v){
+            //     console.log(k);
+            //     if($(li).hasClass(k))
+            //     {
+            //         bgColor = v;
+            //     }
+
+            // });
+
+            $(li).css("background-color",bgColor)
+                    .css('color', color);
+        });
+    </script>
+
+    <h5>新增元素</h5>
+    <ol id="jq-append">
+        
+    </ol>
+    <script>
+
+        var hh = $('<li/>').text('HHH');
+
+        // append 在新行加入元素
+        $('#jq-append').append(hh);
+        $('#jq-append').append(hh.clone());
+        $('#jq-append').append(hh.clone());
+
+
+        // appendTo 元素加到目標元素的新行
+        hh.clone().text('aa').appendTo('#jq-append');
+
+        //prepend 在目標容器的第一行插入元素
+        $('#jq-append').prepend(hh.clone().text('prep'));
+
+        //prependTo 將元素插入至目標容器的第一行
+        hh.clone().text('prep to').prependTo('#jq-append');
+    </script>
+
+    <h5>顯示 / 隱藏 元素</h5>    
+    <div>
+        <span>Hellow </span>
+        <button id="css-hide">隱藏</button>
+        <button id="css-show">顯示</button>
+        <button id="css-toggle">切換</button>
+    </div>
+    <script>
+        
+        $('#css-hide').click(function(){
+            $(this).parent().children('span').hide();
+        });
+
+        $('#css-show').click(function(){            
+            $(this).parent().children('span').show();
+        });
+
+        $('#css-toggle').click(function(){
+            $(this).parent().children('span').toggle('show');
+        });
+
+        //真值
+        // true
+        // not null
+        // not undefine
+        // not empty string
+    
+    </script>
+</body>
+</html>
