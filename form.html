@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery with Form</title>
+
+    <script lang="text/javascript" src="js/jQuery-min.js"></script>
+</head>
+<body>
+    
+    <h1>jQuery表單應用</h1>
+
+    <form id="Login-form" action="" method="" class="has-error">
+
+        <fieldset>
+            <label for="data-account">帳號</label>
+            <input id="data-account" type="text" name="account" placeholder="請輸入帳號">
+        </fieldset>
+
+        <label >密碼</label>
+        <input  type="password" name="password" placeholder="請輸入密碼" data-role="max:>=6|" value="">
+
+        <input type="submit" value="送出">
+        <input type="reset" value="重設">
+        <span class="error"></span>
+        <button type="button">刷新</button>
+    </form>
+
+
+    <script>
+
+        $('form').on('submit', function(event){
+            
+            var valid = true;
+            
+            //-----------驗證邏輯
+            var data = $(this).serializeArray();
+            
+            data.forEach(function(v,k){
+
+                switch(v.name)
+                {
+                    case 'account':
+                        valid = v.value.length >= 8;
+                        break;
+                    case 'password':
+                        valid = v.value.length >= 6;
+                        break;
+                }
+            });
+
+            if(valid === false)
+            {
+                //中止事件
+                event.preventDefault();
+                alert('你的表單輸入錯誤');
+            }
+
+        });
+
+        $('input').change(function(){
+            
+            //處理驗證
+            //不通過則在form新增has-error的class
+        });
+
+        
+        $('input[name="password"]').on('change', function(){
+
+            
+            //處理驗證
+            //不通過則在form新增has-error的class
+            $(this).length >=6;
+            alert('密碼長度不能小於6');
+        });
+
+    </script>
+
+
+</body>
+</html>
