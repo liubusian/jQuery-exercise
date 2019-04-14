@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form with Ajax</title>
+
+    <script lang="text/javascript" src="js/jQuery-min.js"></script>
+</head>
+<body>
+
+    <form action="login.php" method="POST">
+
+        <label>帳號</label>
+        <input type="text" name="account">  
+
+        <label>密碼</label>
+        <input type="password" name="password">
+        
+        <br>
+        
+        <input type="submit" value="登入">
+    </form>
+    
+
+    <script>
+    
+        $('form').on('submit', function(event){
+            //停止HTML的表單送出動作
+            event.preventDefault();
+
+            var data = $(this).serializeArray();
+            
+            //一般使用Ajax的settings 需要參考請求資源的API文檔
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: data,
+                type: 'json',
+                success: function(response, message, xhr){
+
+                    if(typeof response === 'string')
+                    {
+                        response = JSON.parse(response);
+                    }
+
+                    alert('登入成功: ' + response.name);
+                },
+                error: function(xhr, m, error){
+                    console.log(xhr);
+                    alert('登入失敗: ' + xhr.responseText);
+                }
+            });
+        });
+    
+    </script>
+
+</body>
+</html>
