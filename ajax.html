@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery Ajax</title>
+
+    
+    <script lang="text/javascript" src="js/jQuery-min.js"></script>
+</head>
+<body>
+    <h1>SSS</h1>
+    <div id="container" style="border:blue solid"></div>
+    <script>
+        
+        //domain => DNS Server -> IP
+
+
+
+
+        //Ajax 異步傳輸
+        
+        // $('selector').load
+
+        //load resource => url
+        // get method => text
+        $('#container').load('form.html');
+
+
+        // $.get(url, options, handler)
+
+        $.get('js/data1.js', function(response, message, http){
+
+            if(http.status === 200)
+            {
+                console.log(arguments);
+                console.log(response);
+            }else{
+                alert('請求失敗:[' + http.status +"]"+ message);
+            }            
+        });
+
+
+        // $.post
+
+        //$.ajax()
+
+        $.ajax({
+            url: 'js/data1.js',
+            method: 'post',
+            type: 'json',
+            success: function(response, message, http){
+                
+                if(typeof response === 'string')
+                {
+                    response = JSON.parse(response);
+                }
+
+                console.log(response);
+                console.log( response.name);
+            },
+            error: function(XHR, status, statusText){
+                console.log(XHR);
+                // alert('請求失敗:[' + XHR.status +"]"+ statusText);
+            }
+        });
+        
+
+
+    </script>
+</body>
+</html>
