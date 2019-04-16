@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery Plugin</title>
+
+    <script lang="text/javascript" src="js/jQuery-min.js"></script>
+
+    <style>
+        td, th{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="myClass">
+        
+    </div>
+    
+    <script>
+    /**
+        所有的variable、function都是 Object
+
+        隸屬於任何Object的variable 稱為 property (屬性)；反之，稱為變數
+
+        隸屬於任何Object的function 稱為 method (方法)；反之，稱為函數
+
+    */
+    
+    //閉包函數
+    // (handler)(arguments);
+    (function(a,b,c){
+        // console.log(a);
+        // console.log(b);
+        // console.log(c);
+    })(1);
+
+    //jQuery Plugin
+    (function($){
+        
+        $.fn.classTable = function(options){
+
+            var defaultSettings = {
+                schedule: {},
+            };
+
+            var settings = $.extend({}, defaultSettings, options);
+
+            var self = $(this);
+
+            /**
+             * table
+             * tr
+             * th
+             * td
+             * 
+             */
+            var _table = $('<table/>');
+            var _thead = $('<thead/>');
+            var _tbody = $('<tbody/>');
+
+            var _head = [];
+            var _data = [];
+
+            //每個function專注於一件事情
+            makeThead = function(schedule){
+
+                var _tr = $('<tr/>');
+
+                var data = Object.keys(schedule);
+                
+                data.forEach(function(v,k){
+
+                    _th = $('<th/>');
+                    _th.text(v);
+
+                    _tr.append(_th);
+
+                    parseData(v, schedule);
+                });
+
+                _thead.append(_tr);
+            };
+            
+            //資料重整
+            parseData = function(title, schedule){
+
+                _class = schedule[title];
+
+                Object.keys(_class).forEach(function(v,k){
+
+                    if(typeof _data[k] === 'undefined')
+                    {
+                        _data[k] = [];
+                    }
+                    
+                    _data[k].push(_class[v]);
+                });
+            };
+
+            //generate tbody
+            makeTbody = function(data){
+
+                //generate tr
+                data.forEach(function(v,row){
+                    
+                    _tr = $('<tr/>');
+                    
+                    if(row === 4)
+                    {
+                        __tr = _tr.clone();
+                        __tr.append($('<td>中午休息時間</td>').attr('colspan', 7));
+                        _tbody.append(__tr);
+                    }
+
+                    //generate td
+                    v.forEach(function(className, col){
+
+                        _td = $('<td/>');
+                        
+                        //add 
+                        if(className === ''){
+                            
+                            rowspan = 1;
+                            index = 1;
+                            preRow = data[row - 1];
+                            
+                            do{
+                                if(preRow && preRow[col] === '')
+                                {
+                                    
+                                    if(row != 4)
+                                    {
+                                        break;
+                                    }                                    
+                                }
+
+                                currentRow = row+index;
+                                nextRow = data[currentRow];
+
+                                if( currentRow === 4 || currentRow > 7)
+                                {
+                                    hasEmptyClassName = false;
+                                }else{
+                                    next = nextRow? nextRow[col] : '';
+                                    hasEmptyClassName = next === '';
+                                }
+
+                                if(hasEmptyClassName)
+                                {
+                                    rowspan++;
+                                    index++;
+                                }
+
+                            }while(hasEmptyClassName);
+
+                            if(rowspan > 1)
+                            {
+                                _td.text(' ').attr('rowspan', rowspan);
+                                _tr.append(_td);
+                            }
+                        }else{
+                            _td.text(className);
+                            _tr.append(_td);
+                        }
+                        
+                    });
+
+                    _tbody.append(_tr);
+                });
+            }
+
+            makeThead(settings.schedule);
+            makeTbody(_data);
+
+            _table.append(_thead);
+            _table.append(_tbody);
+            _table.attr('border', 1);
+            self.append(_table);
+        };
+
+    })(jQuery);
+
+    var schedule = {
+		星期一:{
+			1:'國文',
+			2:'國文',
+			3:'數學',
+			4:'數學',
+			5:'英文',
+			6:'英文',
+			7:'物理',
+			8:'物理'
+		},
+		星期二:{
+			1:'化學',
+			2:'化學',
+			3:'歷史',
+			4:'歷史',
+			5:'生物',
+			6:'生物',
+			7:'地理',
+			8:'地理'
+		},
+		星期三:{
+			1:'英文',
+			2:'英文',
+			3:'數學',
+			4:'數學',
+			5:'體育',
+			6:'體育',
+			7:'班會',
+			8:'班會'
+		},
+		星期四:{
+			1:'物理',
+			2:'物理',
+			3:'國文',
+			4:'國文',
+			5:'公民',
+			6:'公民',
+			7:'化學',
+			8:'化學'
+		},
+
+		星期五:{
+			1:'生物',
+			2:'生物',
+			3:'數學',
+			4:'數學',
+			5:'英文',
+			6:'英文',
+			7:'地球科學',
+			8:'地球科學'
+		},
+		星期六:{
+			1:'',
+			2:'',
+			3:'',
+			4:'',
+			5:'',
+			6:'',
+			7:'',
+			8:''
+		},
+		星期日:{
+			1:'',
+			2:'',
+			3:'',
+			4:'',
+			5:'',
+			6:'',
+			7:'',
+			8:''
+		},
+    };
+    
+    $('#myClass').classTable({
+        schedule: schedule
+    });
+
+    </script>
+</body>
+</html>
